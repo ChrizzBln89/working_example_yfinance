@@ -1,0 +1,33 @@
+[project]
+name = "working_example_yfinance"
+version = "0.0.1"
+authors = [{ name = "christophbieritz1989@gmail.com" }]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    # Any dependencies for jobs and pipelines in this project can be added here
+    # See also https://docs.databricks.com/dev-tools/bundles/library-dependencies
+    #
+    # LIMITATION: for pipelines, dependencies are cached during development;
+    # add dependencies to the 'environment' section of your pipeline.yml file instead
+    "yfinance>=0.2.0",
+    "pandas>=2.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+    "databricks-dlt",
+    "databricks-connect>=16.4,<16.5",
+    "ipykernel",
+]
+
+[project.scripts]
+main = "working_example_yfinance.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 120
